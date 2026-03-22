@@ -1,0 +1,89 @@
+<div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+  <div class="w-full max-w-md">
+    <form class="bg-white rounded-2xl shadow-sm border border-gray-200 px-8 py-10 space-y-6">
+      <div class="space-y-1">
+        <h2 class="text-2xl font-semibold text-gray-900">Sign in</h2>
+        <p class="text-sm text-gray-500">Signal Forms</p>
+      </div>
+
+      <!-- Email -->
+      <div class="space-y-1">
+        <label class="block text-sm font-medium text-gray-700">
+          Email
+          <input
+            type="email"
+            [formField]="loginForm.email"
+            class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            placeholder="you@gmail.com"
+          />
+        </label>
+      </div>
+
+      <!-- Password -->
+      <div class="space-y-1">
+        <label class="block text-sm font-medium text-gray-700">
+          Password
+          <input
+            type="password"
+            [formField]="loginForm.password"
+            class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            placeholder="••••••••"
+          />
+        </label>
+      </div>
+
+      <!-- Remember me -->
+      <div class="flex items-center gap-2">
+        <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            [formField]="loginForm.rememberMe"
+            class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 focus:ring-2 cursor-pointer"
+          />
+          Remember me
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-medium rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition cursor-pointer"
+      >
+        Log in
+      </button>
+    </form>
+
+    <!-- Debug panel -->
+    <div class="mt-6 bg-white rounded-xl border border-gray-200 px-6 py-5">
+      <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+        Signal debug
+      </h3>
+
+      <div class="space-y-3 font-mono text-xs">
+        <div class="grid grid-cols-3 gap-2 text-gray-400 font-medium pb-1 border-b border-gray-100">
+          <span>Field</span>
+          <span>Form value()</span>
+          <span>Model signal</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 items-center">
+          <span class="text-gray-500">email</span>
+          <span class="text-blue-600 truncate">{{ loginForm.email().value() || '—' }}</span>
+          <span class="text-emerald-600 truncate">{{ loginModel().email || '—' }}</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 items-center">
+          <span class="text-gray-500">password</span>
+          <span class="text-blue-600">{{ loginForm.password().value() ? '••••••••' : '—' }}</span>
+          <span class="text-emerald-600">{{ loginModel().password ? '••••••••' : '—' }}</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 items-center">
+          <span class="text-gray-500">rememberMe</span>
+          <span class="text-blue-600">{{ loginForm.rememberMe().value() ? 'true' : 'false' }}</span>
+          <span class="text-emerald-600">{{ loginModel().rememberMe ? 'true' : 'false' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
