@@ -1,6 +1,8 @@
 <div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
   <div class="w-full max-w-md">
     <form class="bg-white rounded-2xl shadow-sm border border-gray-200 px-8 py-10 space-y-6">
+      <!-- (submit)="onSubmit($event)" -->
+
       <div class="space-y-1">
         <h2 class="text-2xl font-semibold text-gray-900">Sign in</h2>
         <p class="text-sm text-gray-500">Signal Forms</p>
@@ -10,13 +12,21 @@
       <div class="space-y-1">
         <label class="block text-sm font-medium text-gray-700">
           Email
+          <!-- Notice it is no longer formControlName!!! -->
           <input
             type="email"
             [formField]="loginForm.email"
             class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-            placeholder="you@gmail.com"
           />
         </label>
+        <!-- this is a signal! -->
+        <!-- @if (loginForm.email().touched() && loginForm.email().invalid()) {
+          <div class="error">
+            @for (error of loginForm.email().errors(); track error.kind) {
+              <span class="mt-1 text-xs text-red-500">{{ error.message }}</span>
+            }
+          </div>
+        } -->
       </div>
 
       <!-- Password -->
@@ -30,6 +40,13 @@
             placeholder="••••••••"
           />
         </label>
+        <!-- @if (loginForm.password().invalid() && loginForm.password().touched()) {
+          <div class="error">
+            @for (error of loginForm.password().errors(); track error.kind) {
+              <span class="mt-1 text-xs text-red-500">{{ error.message }}</span>
+            }
+          </div>
+        } -->
       </div>
 
       <!-- Remember me -->
@@ -48,6 +65,7 @@
       <button
         type="submit"
         class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-medium rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition cursor-pointer"
+        [disabled]="loginForm().invalid()"
       >
         Log in
       </button>
